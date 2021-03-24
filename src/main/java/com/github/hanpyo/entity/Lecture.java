@@ -49,7 +49,7 @@ public class Lecture extends AbstractBaseTimeEntity {
 	@Column(name = "lecture_current_student_number")
 	private Integer currentStudentNumber;
 
-	@Column(name = "lecture_divistion_number")
+	@Column(name = "lecture_division_number")
 	private Integer divisionNumber;
 
 	@Column(name = "lecture_department")
