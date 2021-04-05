@@ -2,6 +2,7 @@ package com.github.hanpyo.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -57,4 +59,21 @@ public class Lecture extends AbstractBaseTimeEntity {
 
 	@OneToMany(mappedBy = "lecture")
 	private List<LectureTime> lectureTimes = new ArrayList<>();
+
+	@Builder
+	public Lecture(Map<String, Object> lectureInfo) {
+		this.id = Long.parseLong((String) lectureInfo.get("LECT_NO"));
+		this.code = (String) lectureInfo.get("CORS_CD");
+		this.name = (String) lectureInfo.get("CORS_NM");
+		this.room = (String) lectureInfo.get("LECT_RM");
+		this.professor = (String) lectureInfo.get("PROF_NM");
+		this.credit = Integer.parseInt((String) lectureInfo.get("CREDIT"));
+		this.requiredGrade = Integer.parseInt((String) lectureInfo.get("SCH_YR"));
+		this.requiredMajor = "";
+		if (lectureInfo.get("CLS_CNT") == null) this.totalStudentNumber = 0;
+		else this.totalStudentNumber = Integer.parseInt((String) lectureInfo.get("CLS_CNT"));
+		this.currentStudentNumber = Integer.parseInt((String) lectureInfo.get("LECT_CNT"));
+		this.divisionNumber = Integer.parseInt((String) lectureInfo.get("CLS_NO"));
+		this.department = (String) lectureInfo.get("DEPT_NM");
+	}
 }
