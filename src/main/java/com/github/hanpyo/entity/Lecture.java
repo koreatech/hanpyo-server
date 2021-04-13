@@ -110,4 +110,26 @@ public class Lecture extends AbstractBaseTimeEntity {
                 .department(department)
                 .build();
     }
+
+    public boolean equals(Lecture lecture) {
+        if (lecture == null) return false;
+        if (!this.id.equals(lecture.id)) return false;
+        if (!this.code.equals(lecture.code)) return false;
+        if (!this.name.equals(lecture.name)) return false;
+        if (!this.room.equals(lecture.room)) return false;
+        if (!this.professor.equals(lecture.professor)) return false;
+        if (!this.credit.equals(lecture.credit)) return false;
+        if (!this.requiredGrade.equals(lecture.requiredGrade)) return false;
+        if (!this.requiredMajor.equals(lecture.requiredMajor)) return false;
+        if (!this.totalStudentNumber.equals(lecture.totalStudentNumber)) return false;
+        if (!this.currentStudentNumber.equals(lecture.currentStudentNumber)) return false;
+        if (!this.divisionNumber.equals(lecture.divisionNumber)) return false;
+        if (!this.department.equals(lecture.department)) return false;
+//        if (this.lectureTimes != null && !this.lectureTimes.equals(lecture.lectureTimes)) return false;
+        return true;
+    }
+
+    public void setLectureTimes(List<LectureTime> lectureTimes) {
+        this.lectureTimes = lectureTimes;
+    }
 }
