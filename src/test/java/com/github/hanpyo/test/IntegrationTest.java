@@ -2,6 +2,7 @@ package com.github.hanpyo.test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import com.github.hanpyo.HanpyoApplication;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -16,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest(classes = {HanpyoApplication.class})
 @Import({JpaTestSupport.class})
 @AutoConfigureMockMvc
+@Transactional
 @ActiveProfiles("test")
 @Disabled
 public abstract class IntegrationTest {
