@@ -1,0 +1,28 @@
+scalar Long
+
+type Query {
+    me: Member!
+}
+
+type Mutation {
+    signUp(input: SignUpDto!): Member!
+}
+
+type Member {
+    id: ID
+    email: String
+    name: String
+    nickname: String
+    grade: Int
+    major: String
+    role: String
+}
+
+input SignUpDto {
+    email: String!
+    password: String!
+    name: String!
+    nickname: String!
+    grade: Int!
+    major: String!
+}
