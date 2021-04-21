@@ -1,7 +1,7 @@
 scalar Long
 
 type Query {
-    me: Member!
+    myMemberInfo: Member!
 }
 
 type Mutation {

@@ -17,7 +17,7 @@ public class RootMemberQueryResolver implements GraphQLQueryResolver {
 	private final MemberService memberService;
 
 	@PreAuthorize("hasRole('VERIFIED_MEMBER')")
-	public MemberDto me() {
+	public MemberDto myMemberInfo() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (!(principal instanceof MemberDetails)) {
 			throw new WrongSessionException();
