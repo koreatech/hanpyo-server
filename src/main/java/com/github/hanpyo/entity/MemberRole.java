@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum MemberRole {
 
-	MEMBER("ROLE_MEMBER"), UNAUTHENTICATED("ROLE_UNAUTHENTICATED");
+	VERIFIED_MEMBER("ROLE_VERIFIED_MEMBER"), UNVERIFIED_MEMBER("ROLE_UNVERIFIED_MEMBER");
 
 	private String role;
 

@@ -34,7 +34,7 @@ public class Member extends AbstractBaseTimeEntity {
 	@Column(name = "member_name")
 	private String name;
 
-	@Column(name = "member_nickname")
+	@Column(name = "member_nickname", unique = true)
 	private String nickname;
 
 	@Column(name = "member_grade")
