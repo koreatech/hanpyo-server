@@ -1,5 +1,8 @@
 package com.github.hanpyo.test;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import com.github.hanpyo.config.JpaConfig;
 import com.github.hanpyo.config.QuerydslConfig;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -22,4 +25,7 @@ public abstract class JpaTest {
 
 	@Autowired
 	protected JpaTestSupport jpaTestSupport;
+
+	@PersistenceContext
+	protected EntityManager em;
 }

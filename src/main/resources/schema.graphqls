@@ -2,6 +2,8 @@ scalar Long
 
 type Query {
     myMemberInfo: Member!
+    memberDuplicatedByEmail(email: String!): Boolean!
+    memberDuplicatedByNickname(nickname: String!): Boolean!
 }
 
 type Mutation {
