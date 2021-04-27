@@ -17,6 +17,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Entity
@@ -48,20 +49,20 @@ public class LectureTime {
 	}
 
 	public static LectureTime from (String time, Lecture lecture) {
-		Map<String, Integer> days = Map.of(
-				"월", 540,
-				"화", 1980,
-				"수", 3420,
-				"목", 4860,
-				"금", 6300,
-				"토", 7740,
-				"일", 9180
-		);
+		Map<String, Integer> days = new HashMap<>() {{
+			put("월", 540);
+			put("화", 1980);
+			put("수", 3420);
+			put("목", 4860);
+			put("금", 6300);
+			put("토", 7740);
+			put("일", 9180);
+		}};
 
-		Map<String, Integer> alphas = Map.of(
-				"A", 0,
-				"B", 30
-		);
+		Map<String, Integer> alphas = new HashMap<>() {{
+			put("A", 0);
+			put("B", 30);
+		}};
 
 		Integer dayTime = days.get(time.substring(0, 1));
 		Integer sTime = (Integer.parseInt(time.substring(1, 3)) - 1) * 60 + alphas.get(time.substring(3, 4));
