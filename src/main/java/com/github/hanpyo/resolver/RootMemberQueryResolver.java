@@ -3,6 +3,7 @@ package com.github.hanpyo.resolver;
 import com.github.hanpyo.config.security.MemberDetails;
 import com.github.hanpyo.dto.MemberDto;
 import com.github.hanpyo.exception.WrongSessionException;
+import com.github.hanpyo.repository.MemberRepository;
 import com.github.hanpyo.service.MemberService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 public class RootMemberQueryResolver implements GraphQLQueryResolver {
 
 	private final MemberService memberService;
+	private final MemberRepository memberRepository;
 
 	@PreAuthorize("hasRole('VERIFIED_MEMBER')")
 	public MemberDto myMemberInfo() {
@@ -24,5 +26,13 @@ public class RootMemberQueryResolver implements GraphQLQueryResolver {
 		}
 		MemberDetails memberDetails = (MemberDetails)principal;
 		return memberService.getMemberById(memberDetails.getId());
+	}
+
+	public boolean memberDuplicatedByEmail(String email) {
+		return memberRepository.existsByEmail(email);
+	}
+
+	public boolean memberDuplicatedByNickname(String nickname) {
+		return memberRepository.existsByNickname(nickname);
 	}
 }
