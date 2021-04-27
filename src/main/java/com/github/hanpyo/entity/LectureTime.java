@@ -49,7 +49,7 @@ public class LectureTime {
 	}
 
 	public static LectureTime from (String time, Lecture lecture) {
-		Map<String, Integer> days = new HashMap<>() {{
+		Map<String, Integer> days = new HashMap<String, Integer>() {{
 			put("월", 540);
 			put("화", 1980);
 			put("수", 3420);
@@ -59,7 +59,7 @@ public class LectureTime {
 			put("일", 9180);
 		}};
 
-		Map<String, Integer> alphas = new HashMap<>() {{
+		Map<String, Integer> alphas = new HashMap<String, Integer>() {{
 			put("A", 0);
 			put("B", 30);
 		}};
