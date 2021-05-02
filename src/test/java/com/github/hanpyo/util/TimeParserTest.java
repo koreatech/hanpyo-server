@@ -21,8 +21,8 @@ class TimeParserTest extends MockTest {
         String result3 = TimeParser.parseTimeString(null);
 
         // then
-        then(result).isEqualTo("[{start:960, end:1080}, {start:2400, end:2520}]");
-        then(result2).isEqualTo("[{start:900, end:960}, {start:960, end:1080}]");
+        then(result).isEqualTo("[{\"start\" : 960, \"end\" : 1080}, {\"start\" : 2400, \"end\" : 2520}]");
+        then(result2).isEqualTo("[{\"start\" : 900, \"end\" : 960}, {\"start\" : 960, \"end\" : 1080}]");
         then(result3).isEqualTo("");
     }
 }
