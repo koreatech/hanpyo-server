@@ -4,6 +4,7 @@ type Query {
     myMemberInfo: Member!
     memberDuplicatedByEmail(email: String!): Boolean!
     memberDuplicatedByNickname(nickname: String!): Boolean!
+    lectureInfos: [Lecture]!
 }
 
 type Mutation {
@@ -18,6 +19,27 @@ type Member {
     grade: Int
     major: String
     role: String
+}
+
+type Lecture {
+    id: ID!
+    code: String!
+    name: String!
+    room: String
+    professor: String
+    credit: Int!
+    requiredGrade: Int
+    requiredMajor: String
+    totalStudentNumber: Int!
+    currentStudentNumber: Int!
+    divisionNumber: Int!
+    department: String!
+    lectureTimes: [LectureTime]
+}
+
+type LectureTime {
+    start: Int!
+    end: Int!
 }
 
 input SignUpDto {
