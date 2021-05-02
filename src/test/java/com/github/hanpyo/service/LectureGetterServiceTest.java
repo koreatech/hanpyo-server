@@ -3,7 +3,6 @@ package com.github.hanpyo.service;
 import com.github.hanpyo.constant.LectureTestConstant;
 import com.github.hanpyo.entity.Lecture;
 import com.github.hanpyo.repository.LectureRepository;
-import com.github.hanpyo.repository.LectureTimeRepository;
 import com.github.hanpyo.test.IntegrationTest;
 
 import org.junit.jupiter.api.DisplayName;
@@ -27,11 +26,9 @@ public class LectureGetterServiceTest extends IntegrationTest {
     @Autowired
     private LectureRepository lectureRepository;
 
-    @Autowired
-    private LectureTimeRepository lectureTimeRepository;
-
     private List<Lecture> mockLectureList = LectureTestConstant.mockLectureList;
     private List<Lecture> mockUpdateLectureList = LectureTestConstant.mockUpdateLectureList;
+    private List<Lecture> mockUpdateLectureTimeList = LectureTestConstant.mockUpdateLectureTimeList;
 
     @Test
     @DisplayName("불러온 Document를 List로 변환 가능해야 한다.")
@@ -86,6 +83,14 @@ public class LectureGetterServiceTest extends IntegrationTest {
     @Test
     @DisplayName("시간이 변경된 과목 업데이트가 가능하다.")
     public void updateLecturesTimeTest() throws Exception {
-        then(true).isEqualTo(true);
+        // given
+        lectureRepository.saveAll(mockLectureList);
+
+        // when
+        lectureGetterService.updateLectures(mockUpdateLectureTimeList);
+        Lecture updateLecture = lectureRepository.findById(124L).get();
+
+        // then
+        then(updateLecture.getLectureTimes()).isEqualTo("[{start:3540, end:3660}]");
     }
 }

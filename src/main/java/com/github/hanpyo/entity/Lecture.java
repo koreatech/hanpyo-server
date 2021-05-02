@@ -1,14 +1,12 @@
 package com.github.hanpyo.entity;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.github.hanpyo.util.TimeParser;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -57,11 +55,11 @@ public class Lecture extends AbstractBaseTimeEntity {
     @Column(name = "lecture_department")
     private String department;
 
-    @OneToMany(mappedBy = "lecture")
-    private List<LectureTime> lectureTimes = new ArrayList<>();
+    @Column(name = "lecture_Times")
+    private String lectureTimes;
 
     @Builder
-    public Lecture(Long id, String code, String name, String room, String professor, Integer credit, Integer requiredGrade, String requiredMajor, Integer totalStudentNumber, Integer currentStudentNumber, Integer divisionNumber, String department, List<LectureTime> lectureTimes) {
+    public Lecture(Long id, String code, String name, String room, String professor, Integer credit, Integer requiredGrade, String requiredMajor, Integer totalStudentNumber, Integer currentStudentNumber, Integer divisionNumber, String department, String lectureTimes) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -94,6 +92,7 @@ public class Lecture extends AbstractBaseTimeEntity {
         Integer currentStudentNumber = Integer.parseInt((String) lectureInfo.get("LECT_CNT"));
         Integer divisionNumber = Integer.parseInt((String) lectureInfo.get("CLS_NO"));
         String department = (String) lectureInfo.get("DEPT_NM");
+        String lectureTimes = TimeParser.parseTimeString((String) lectureInfo.get("LECT_TM"));
 
         return Lecture.builder()
                 .id(id)
@@ -108,6 +107,7 @@ public class Lecture extends AbstractBaseTimeEntity {
                 .currentStudentNumber(currentStudentNumber)
                 .divisionNumber(divisionNumber)
                 .department(department)
+                .lectureTimes(lectureTimes)
                 .build();
     }
 
@@ -125,11 +125,7 @@ public class Lecture extends AbstractBaseTimeEntity {
         if (!this.currentStudentNumber.equals(lecture.currentStudentNumber)) return false;
         if (!this.divisionNumber.equals(lecture.divisionNumber)) return false;
         if (!this.department.equals(lecture.department)) return false;
-//        if (this.lectureTimes != null && !this.lectureTimes.equals(lecture.lectureTimes)) return false;
+        if (!this.lectureTimes.equals(lecture.lectureTimes)) return false;
         return true;
-    }
-
-    public void setLectureTimes(List<LectureTime> lectureTimes) {
-        this.lectureTimes = lectureTimes;
     }
 }

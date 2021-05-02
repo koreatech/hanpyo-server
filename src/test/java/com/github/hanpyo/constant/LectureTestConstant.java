@@ -1,7 +1,6 @@
 package com.github.hanpyo.constant;
 
 import com.github.hanpyo.entity.Lecture;
-import com.github.hanpyo.entity.LectureTime;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +19,7 @@ public class LectureTestConstant {
             .currentStudentNumber(30)
             .divisionNumber(1)
             .department("")
+            .lectureTimes("[{start:3540, end:3660}, {start:3720, end:3840}]")
             .build();
 
     public static Lecture mockLecture2 = Lecture.builder()
@@ -35,6 +35,7 @@ public class LectureTestConstant {
             .currentStudentNumber(30)
             .divisionNumber(1)
             .department("")
+            .lectureTimes("[{start:3540, end:3660}, {start:3720, end:3840}]")
             .build();
 
     public static Lecture mockLecture3 = Lecture.builder()
@@ -50,6 +51,7 @@ public class LectureTestConstant {
             .currentStudentNumber(30)
             .divisionNumber(1)
             .department("")
+            .lectureTimes("[{start:3540, end:3660}, {start:3720, end:3840}]")
             .build();
 
     public static Lecture mockLecture4 = Lecture.builder()
@@ -65,6 +67,7 @@ public class LectureTestConstant {
             .currentStudentNumber(30)
             .divisionNumber(1)
             .department("")
+            .lectureTimes("[{start:3540, end:3660}, {start:3720, end:3840}]")
             .build();
 
     public static Lecture mockLecture5 = Lecture.builder()
@@ -80,10 +83,8 @@ public class LectureTestConstant {
             .currentStudentNumber(30)
             .divisionNumber(1)
             .department("")
+            .lectureTimes("[{start:3540, end:3660}]")
             .build();
-
-    public static LectureTime mockLectureTime2 = LectureTime.from("월03A~04B", mockLecture2);
-    public static LectureTime mockLectureTime5 = LectureTime.from("월04A~05B", mockLecture5);
 
     public static List<Lecture> mockLectureList = Arrays.asList(mockLecture1, mockLecture2, mockLecture3);
     public static List<Lecture> mockUpdateLectureList = Arrays.asList(mockLecture2, mockLecture4);
