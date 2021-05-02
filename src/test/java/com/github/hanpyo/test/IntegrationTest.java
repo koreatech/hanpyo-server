@@ -4,6 +4,7 @@ import static com.github.hanpyo.entity.QMember.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import com.github.hanpyo.HanpyoApplication;
 import com.github.hanpyo.entity.Member;
@@ -19,6 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
+@Transactional
 @SpringBootTest(
 	classes = {HanpyoApplication.class},
 	webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
