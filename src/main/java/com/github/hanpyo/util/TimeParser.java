@@ -38,7 +38,7 @@ public abstract class TimeParser {
             Integer startTime = dayTime + sTime;
             Integer endTime = dayTime + eTime;
 
-            timeList.add("{start:"+startTime+", end:"+endTime+"}");
+            timeList.add("{\"start\" : "+startTime+", \"end\" : "+endTime+"}");
         }
 
         return timeList.toString();
