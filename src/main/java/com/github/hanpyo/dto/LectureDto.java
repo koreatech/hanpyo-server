@@ -31,6 +31,8 @@ public class LectureDto {
     private final String department;
     private final LectureTime[] lectureTimes;
 
+    private final static ObjectMapper objectMapper = new ObjectMapper();
+
     public static List<LectureDto> from(Collection<Lecture> entities) {
         return entities.stream().map(LectureDto::from).collect(Collectors.toList());
     }
@@ -57,7 +59,7 @@ public class LectureDto {
 
     public static LectureTime[] parseStringToArrayObject(String lectureTimeArray) {
         if (lectureTimeArray == "") return null;
-        ObjectMapper objectMapper = new ObjectMapper();
+
         LectureTime[] lectureTimes = null;
         try {
             lectureTimes = objectMapper.readValue(lectureTimeArray, LectureTime[].class);
