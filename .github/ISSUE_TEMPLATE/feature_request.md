@@ -3,7 +3,6 @@ name: Feature request
 about: 기능 요구사항
 title: ''
 labels: ''
-assignees: Do-ho, jinhyukoo, wooojini
 
 ---
 
