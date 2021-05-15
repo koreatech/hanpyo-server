@@ -1,20 +1,19 @@
 package com.github.hanpyo.resolver;
 
 import com.github.hanpyo.config.security.MemberDetails;
-import com.github.hanpyo.dto.LectureDto;
 import com.github.hanpyo.dto.MemberDto;
-import com.github.hanpyo.entity.Lecture;
 import com.github.hanpyo.exception.WrongSessionException;
 import com.github.hanpyo.repository.MemberRepository;
 import com.github.hanpyo.service.LectureService;
 import com.github.hanpyo.service.MemberService;
+
 import graphql.kickstart.tools.GraphQLQueryResolver;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -42,8 +41,4 @@ public class RootMemberQueryResolver implements GraphQLQueryResolver {
 		return memberRepository.existsByNickname(nickname);
 	}
 
-	public List<LectureDto> getLectureInfos() {
-		final List<Lecture> all = lectureService.getLectures();
-		return LectureDto.from(all);
-	}
 }
