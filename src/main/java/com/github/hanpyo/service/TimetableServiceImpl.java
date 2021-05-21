@@ -4,6 +4,7 @@ import com.github.hanpyo.dto.CreateTimetableDto;
 import com.github.hanpyo.dto.TimetableDto;
 import com.github.hanpyo.entity.Member;
 import com.github.hanpyo.entity.TimeTable;
+import com.github.hanpyo.exception.EntityNotFoundException;
 import com.github.hanpyo.repository.MemberRepository;
 import com.github.hanpyo.repository.TimetableRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,14 +22,14 @@ public class TimetableServiceImpl implements TimetableService {
 
     @Override
     @Transactional
-    public TimetableDto createTimetable(Long id, CreateTimetableDto dto) {
-        Optional<Member> member = memberRepository.findById(id);
+    public TimetableDto createTimetable(long memberId, CreateTimetableDto dto) {
+        Member member = memberRepository.findById(memberId)
+            .orElseThrow(EntityNotFoundException::new);
 
         TimeTable timeTable = TimeTable.builder()
                 .name(dto.getName())
-                .member(member.orElse(null))
+                .member(member)
                 .build();
-
         timetableRepository.save(timeTable);
 
         return TimetableDto.builder()

@@ -5,5 +5,5 @@ import com.github.hanpyo.dto.TimetableDto;
 
 public interface TimetableService {
 
-    TimetableDto createTimetable(Long id, CreateTimetableDto dto);
+    TimetableDto createTimetable(long memberId, CreateTimetableDto dto);
 }
