@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -40,4 +41,10 @@ public class TimeTable extends AbstractBaseTimeEntity {
 
 	@OneToMany(mappedBy = "timeTable")
 	private List<PersonalSchedule> personalSchedules = new ArrayList<>();
+
+	@Builder
+	public TimeTable(String name, Member member) {
+		this.name = name;
+		this.member = member;
+	}
 }
